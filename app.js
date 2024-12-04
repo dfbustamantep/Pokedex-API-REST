@@ -1,20 +1,33 @@
 const listaPokemon = document.getElementById("listaPokemon")
 let URL = "https://pokeapi.co/api/v2/pokemon/"
 
-for (let i = 1; i <=300; i++) {
-    fetch(URL+i)
-                .then((response)=>response.json())
-                .then(data =>mostrarPokemon(data))
+//Funcion asincrona,esta siempre devuelve una promesa automaticamente
+async function cargarSecuencialmente(){
+    for (let i = 1; i <=300; i++) {
+        try{
+            //el await pausa la funcion asincrona hasta que se resuelva o rechace la promesa
+            const response = await fetch(URL+i);
+            const pokemon = await response.json();
+            mostrarPokemon(pokemon);
+        }
+        catch(error){
+            console.error(`Error al cargar el Pokémon con ID ${i}:`, error);
+        }
+        
+    }
+
 }
 
-function mostrarPokemon(pokemon) {
+
+ function mostrarPokemon(pokemon) {
 
     let tipos = pokemon.types.map(type=>`
         <p class="${type.type.name} tipo">${type.type.name}</p>
         `);
     tipos = tipos.join(``);
 
-
+    
+    
     const section = document.createElement("section");
     section.classList.add("pokemon");
     section.innerHTML=`
@@ -39,7 +52,7 @@ function mostrarPokemon(pokemon) {
         `
         listaPokemon.append(section)
 }
-
+cargarSecuencialmente();
 /*
 <div class="pokemon">
                     <p class="pokemon-id-back">1</p>
