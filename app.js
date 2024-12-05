@@ -3,7 +3,7 @@ let URL = "https://pokeapi.co/api/v2/pokemon/"
 
 //Funcion asincrona,esta siempre devuelve una promesa automaticamente
 async function cargarSecuencialmente(){
-    for (let i = 1; i <=300; i++) {
+    for (let i = 1; i <=10; i++) {
         try{
             //el await pausa la funcion asincrona hasta que se resuelva o rechace la promesa
             const response = await fetch(URL+i);
