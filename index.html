@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Imagen-->
+    <!--Imagen que aparece en la pestania del navegador-->
     <link rel="icon" type="img/jpg" href="images/pokeball.png" />
-
-
     <title>Pókedex</title>
     <!-- Vincular el archivo CSS -->
     <link rel="stylesheet" href="./style.css">
@@ -17,12 +15,23 @@
     <header class="header-principal">
         <h1>Pókedex</h1>
         <!--<img id="imagen-header" src="./images/pokeballicon.png" alt="Logo">-->
-        
     </header>
 
+    <br>
+
+    <!--Filtro por id del pokemon-->
+    <section id="busqueda">
+        <legend>Buscar pokemon por ID:</legend>
+        <input type="number" id="filtroId" name="filtroId">
+    </section>
+    
+    <!--Main la parte mas importante del programa,osea donde vamos a cargar los pokemones-->
     <main>
+        <!---->
         <section id="pokemones">
+            <!---->
             <section class="pokemon-todos" id="listaPokemon">
+                
                 <!-- <div class="pokemon">
                     <p class="pokemon-id-back">1</p>
                     <div class="pokemon-imagen">
@@ -47,10 +56,13 @@
 
                 
             </section>
-
         </section>
     </main>
     <script src="./app.js"></script>
 </body>
 
+
+<footer>
+    
+</footer>
 </html>

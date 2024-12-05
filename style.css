@@ -7,6 +7,11 @@ html, body {
 header{
     padding-block: 1rem;
 }
+
+footer{
+    padding-block: 1rem;
+    background-color: rgb(211, 18, 18);
+}
     /*
 #imagen-header{
     color: white;
@@ -15,6 +20,37 @@ header{
     padding: 0.5rem;
     justify-content: center;
 }*/
+
+legend{
+    font-family:'Verdana' ;
+    font-weight: bold;
+    
+}
+
+input{
+    background-color: white;
+    font-family:'Verdana' ;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    border-color: rgb(211, 18, 18);
+    box-shadow: 0 0 8px rgba(211, 18, 18);
+    outline: none;
+}
+
+#busqueda{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+
 .header-principal{
     width: 100%; /* Ocupa todo el ancho de la ventana */
     box-sizing: border-box; /* Incluye el padding en el ancho total */
@@ -168,3 +204,4 @@ main{
     /* Aumentar el tamaño de la imagen al pasar el mouse */
     transform: scale(1.5); 
 }
+

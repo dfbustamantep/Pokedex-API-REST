@@ -1,33 +1,35 @@
+//Del html cogemos la section con id listaPokemon
 const listaPokemon = document.getElementById("listaPokemon")
+//Link de la pokeapi
 let URL = "https://pokeapi.co/api/v2/pokemon/"
 
 //Funcion asincrona,esta siempre devuelve una promesa automaticamente
 async function cargarSecuencialmente(){
-    for (let i = 1; i <=10; i++) {
+    //Ciclo donde la segunda parte del ciclo indica cuantos pokemones vamos a usar
+    for (let i = 1; i <=500; i++) {
         try{
             //el await pausa la funcion asincrona hasta que se resuelva o rechace la promesa
             const response = await fetch(URL+i);
+            //La pokeapi guarda la infromacion de los pokemones en formato JSON
             const pokemon = await response.json();
             mostrarPokemon(pokemon);
         }
         catch(error){
             console.error(`Error al cargar el Pokémon con ID ${i}:`, error);
         }
-        
     }
-
 }
 
 
  function mostrarPokemon(pokemon) {
-
+    //Los pokemones pueden tener hasta 2 tipos por lo que guardamos esos datos en una lista
     let tipos = pokemon.types.map(type=>`
         <p class="${type.type.name} tipo">${type.type.name}</p>
         `);
     tipos = tipos.join(``);
 
     
-    
+    //Creamos un elemento html de tipo section
     const section = document.createElement("section");
     section.classList.add("pokemon");
     section.innerHTML=`
@@ -38,21 +40,53 @@ async function cargarSecuencialmente(){
                     </article>
                     <section class="pokemon-info">
                         <article class="nombre-contenedor">
-                            
                             <h2 class="pokemon-nombre">${pokemon.name}</h2>
                         </article>
                         <article class="pokemon-tipos">
                             ${tipos}
                         </article>
                         <article class="pokemon-stats">
-                            <p class="stat">${pokemon.height}M</p>
-                            <p class="stat">${pokemon.weight}KG</p>
+                            <h4 class="stat">${pokemon.height}M</h4>
+                            <h4 class="stat">${pokemon.weight}KG</h4>
                         </article>
                     </section>
         `
         listaPokemon.append(section)
 }
 cargarSecuencialmente();
+
+//Seleccionamos el input de busqueda
+const filtroId  = document.getElementById('filtroId');
+
+filtroId.addEventListener('input',function () {
+    //Se captura el valor ingresado
+    const pokemonId =  filtroId.value.trim();
+    //Si si hay un id ingresado
+    if (pokemonId) {
+        // Revisamos si ya existe un Pokémon con ese ID en la lista de la interfaz
+        const pokemones = Array.from(listaPokemon.querySelectorAll('.pokemon'));
+        
+        //Mostramos solo el pokemon con el ID ingresado y se oculatan los demas+
+        pokemones.forEach(pokemon => {
+            const id = pokemon.querySelector('.pokemon-id-back').textContent;
+            if (id === pokemonId) {
+                //El elemento del Pokemon se muestra en la pagina cn un estilo de visualizacion block
+                pokemon.style.display = 'block';
+            } else {
+                //El elemento del pokemon se oculta de la pagina
+                pokemon.style.display = 'none';
+            }
+        });
+    } else {
+        /*listaPokemon.innerHTML = ''; // Limpiamos la lista de resultados
+        cargarSecuencialmente();*/
+        // Si no se ingresa un ID, mostrar todos los Pokémon
+        const pokemones = Array.from(listaPokemon.querySelectorAll('.pokemon'));
+        pokemones.forEach(pokemon => {
+            pokemon.style.display = 'block';
+        });
+    }
+});
 /*
 <div class="pokemon">
                     <p class="pokemon-id-back">1</p>
