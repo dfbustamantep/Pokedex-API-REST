@@ -3,13 +3,20 @@
 <p align="center">
   <img src ="https://dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/284377/pokeapi_1024.png"></img>
 </p>
-<p>API RESTful a la API de pokeAPI,donde se puedevisualizar,buscar y filtrar informacion sobre los pokemones</p>
+<p>API RESTful basada en la pokeAP,diseñada para visualizar,buscar y filtrar informacion sobre Pokèmon</p>
 
 
 
 <h2>Funcionalidades</h2>
 <ul>
-  <li>Visualizacion de informacion sobre los pokemones (Nombre,ID,Tipo,Altura y Peso)</li>
+  <li>Visualizacion de informacion sobre los Pokèmon</li>
+  <ul>
+    <li>Nombre</li>
+    <li>ID</li>
+    <li>Tipo</li>
+    <li>Altura</li>
+    <li>Peso</li>
+  </ul>
   <li>Filtro de busqueda por ID</li>
 </ul> 
 
@@ -20,12 +27,7 @@
   <li>PokeAPI</li>
   <li>Git y GitHub</li>
 </ul> 
-<!--  </ul>
 
-<h2>Herramientas usadas</h2>
-<ul>
-    <li></li>
-    
-</ul> 
-  -->
+
+
 
